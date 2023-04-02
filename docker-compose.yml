@@ -1,0 +1,10 @@
+version: '3'
+services:
+  competitive-programming:
+    image: 'competitive-programming'
+    container_name: competitive-programming
+    volumes:
+      - ${PWD}/work:/work
+    working_dir: /work
+    tty: true
+    restart: always
