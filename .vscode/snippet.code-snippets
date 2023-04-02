@@ -1,0 +1,43 @@
+{
+	// Place your AtCoder workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	
+	"dijkstra": {
+		"prefix": "dijkstra",
+		"body": [
+			"template <typename T>",
+			"vector<T> dijkstra(WeightedGraph<T> &g, int start = 0) {",
+				"\tusing P = pair<T, int>;",
+				"\tint N = (int)g.size();",
+				"\tvector<T> d(N, T(-1));",
+				"\tpriority_queue<P, vector<P>, greater<P> > Q;",
+				"\td[start] = 0;",
+				"\tQ.emplace(0, start);",
+				"\twhile (!Q.empty()) {",
+				"\tP p = Q.top();",
+				"\tQ.pop();",
+				"\tint cur = p.second;",
+				"\tif (d[cur] < p.first) continue;",
+				"\tfor (auto dst : g[cur]) {",
+					"\t\tif (d[dst] == T(-1) || d[cur] + dst.cost < d[dst]) {",
+					"\t\td[dst] = d[cur] + dst.cost;",
+					"\t\tQ.emplace(d[dst], dst);",
+				"\t}",
+			"return d;",
+		]
+	}
+}
