@@ -44,7 +44,7 @@ template <typename T> inline void vout(const V<T>& v, string s = " ")
 template <typename T> inline void vvout(const VV<T>& v, string s = " ")
     {int m = (int)v.size(); rep(i,m) vout(v[i]);}
 template <typename T> inline void vvvout(const VVV<T>& v, string s = " ")
-    {int l = (int)v.size(); rep(i,l) cout << i << "\n"; vvout(v[i]);}
+    {int l = (int)v.size(); rep(i,l) {cout << i << "\n"; vvout(v[i]);}}
 
 template<typename T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return true; } return false; }
 template<typename T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return true; } return false; }
