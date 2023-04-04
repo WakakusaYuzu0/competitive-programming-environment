@@ -24,9 +24,9 @@ ENV CPLUS_INCLUDE_PATH /lib/ac-library
 RUN pip3 install atcoder-tools online-judge-tools
 RUN npm install -g atcoder-cli
 
-RUN mkdir /work && mkdir -p /root/.config/atcoder-cli-nodejs/cpp
-
-ENV ACC_CONFIG_DIR /root/.config/atcoder-cli-nodejs/cpp
-# rename template.cpp
-COPY template/template.cpp ACC_CONFIG_DIR/main.cpp
-COPY template/template.json ACC_CONFIG_DIR/root/.config/atcoder-cli-nodejs/cpp/
+ARG ACC_CONFIG_DIR=/root/.config/atcoder-cli-nodejs/cpp
+RUN mkdir /work && mkdir -p ${ACC_CONFIG_DIR}
+ 
+# rename template
+COPY template/template.cpp ${ACC_CONFIG_DIR}/main.cpp 
+COPY template/template.json ${ACC_CONFIG_DIR}
